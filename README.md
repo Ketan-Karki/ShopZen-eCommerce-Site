@@ -13,6 +13,7 @@ ShopZen is a modern and intuitive e-commerce app built using React, offering a s
 - Various types of filters in Products page
 - Real time updation in cart
 - Add to cart page
+- Personal Wishlist
 - Responsive Design
 - User-Friendly Interface
 
