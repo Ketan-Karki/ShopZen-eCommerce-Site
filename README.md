@@ -4,7 +4,7 @@ ShopZen is a modern and intuitive e-commerce app built using React, offering a s
 
 ## Preview:
 
-[https://shopzenstore.netlify.app/](https://shopzenstore.netlify.app/)
+[https://shopzen-ecommerce.netlify.app/](https://shopzen-ecommerce.netlify.app/)
 
 ## Features:
 
