@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import About from "./About";
@@ -12,8 +12,19 @@ import { ThemeProvider } from "styled-components";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Wishlist from "./Wishlist";
+import Loader from "./components/Loader";
 
 const App = () => {
+  const [Load, setLoad] = useState(false);
+
+  useEffect(() => {
+    setLoad(true);
+
+    setTimeout(() => {
+      setLoad(false);
+    }, 3000);
+  }, []);
+
   const theme = {
     colors: {
       heading: "rgb(24,24,29)",
@@ -39,21 +50,25 @@ const App = () => {
   };
   return (
     <ThemeProvider theme={theme}>
-      <Router>
-        <GlobalStyle />
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/singleproduct/:id" element={<SingleProduct />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/*" element={<ErrorPage />} />
-        </Routes>
-        <Footer />
-      </Router>
+      {Load ? (
+        <Loader />
+      ) : (
+        <Router>
+          <GlobalStyle />
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/wishlist" element={<Wishlist />} />
+            <Route path="/singleproduct/:id" element={<SingleProduct />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/*" element={<ErrorPage />} />
+          </Routes>
+          <Footer />
+        </Router>
+      )}
     </ThemeProvider>
   );
 };
